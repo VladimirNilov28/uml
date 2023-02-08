@@ -1,0 +1,395 @@
+@startuml
+abstract abstract
+abstract class "abctract class"
+annotation annotation
+circle circle
+diamond diamond
+<> diamond_short_form
+entity entity
+enum enum
+interface interface
+@enduml
+
+@startuml
+Class01 <|.. Class02
+Class03 *.. Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+@enduml
+
+@startuml
+Class11 <|.. Class12
+Class13 --> Class14
+Class15 ..> Class16
+class17 ..|> Class18
+Class19 <--* Class20
+@enduml
+
+@startuml
+Class21 #-- Class22
+Class23 x-- Class24
+Class25 }-- Class26
+Class27 +-- Class28
+Class29 ^-- Class30
+@enduml
+
+@startuml
+
+Class01 "К Одному" *-- "от многих" Class02 : композиция
+
+Class03 o-- Class04 : агрегация
+
+Class05 --> "1" Class06
+
+@enduml
+
+@startuml
+class Машина
+
+Водитель - Машина: ведет >
+Машина *- Колесо: имеет 4 >
+Машина -- Персонаж: < владеет
+@enduml
+
+@startuml
+Object <|-- ArrayList
+
+Object : equals()
+ArrayList : Object[] elementData
+ArrayList : Size[]
+
+@enduml
+
+@startuml
+class Dummy {
+    String data
+    void methods()
+}
+class Flight {
+    flightNumber : Integer
+    departureTime : Date
+}
+@enduml
+
+@startuml
+class Dummy {
+    -field1
+    #field2
+    ~method1()
+    +method()
+}
+@enduml
+
+@startuml
+class Dummy {
+    {static} String id
+    {abstract} void methods()
+}
+@enduml
+
+@startuml
+class Object << general >>
+Object <|--- ArrayList
+
+note top of Object : Что за бархатные тяги кестеме?
+note "Меня зовут Юрас" as N1
+note "Меня зовут Марк" as N2
+Object .. N2
+N2 .. ArrayList
+
+class Foo 
+note left : Асалам Алейкум Батищька
+@enduml
+
+@startuml
+class A {
+{static} int counter
++void {abstract} start(int timeout)
+}
+note right of A::counter
+Это поле данных прокомментировано end note 
+note right of A::start
+Этот метод теперь объясняется в UML заметке end note
+@enduml
+
+@startuml
+
+class Dummy
+Dummy --> Foo : Одна связь
+note on link #red: Помни, оно - красное!
+
+Dummy --> Foo2 : Другая связь
+note right on link #LightBlue
+Это моя заметка, чтобы не забыть где правильная связь.
+И еще, она - почти синяя
+end note 
+@enduml
+
+@startuml
+abstract class AbstractList
+abstract AbstractCollection
+interface List 
+interface Collection 
+
+List <|-- AbstractList 
+Collection <|-- AbstractCollection
+
+Collection <|-- List 
+AbstractCollection <|-- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+    Object[] elementData
+    size()
+}
+
+enum TimeUnit {
+    Days 
+    Hours 
+    Minutes 
+}
+
+annotation SuppressWarnings
+
+annotation Annotation {
+    annotation with members
+    String foo()
+    String bar()
+}
+@enduml
+
+@startuml
+
+package "Classic Collections" #DDDDDD {
+    Object <|-- ArrayList 
+}
+
+package net.sourceforge.plantuml {
+    Object <|-- Demo1
+    Demo1 *- Demo2
+}
+@enduml
+
+@startuml
+scale 750 width 
+package fool <<Node>> {
+    class Class1 
+}
+
+package foo2 <<Rectangle>> {
+    class Class3 
+}
+
+package foo3 <<Folder>> {
+    class Class3 
+}
+
+package foo4 <<Folder>> {
+    class Class4  
+}
+
+package foo5 <<Folder>> {
+    class Class5  
+}
+
+package foo6 <<Folder>> {
+    class Class6  
+}
+@enduml
+
+
+@startuml
+Пользователь -left-> Лево
+Пользователь -right-> Право 
+Пользователь -up-> Верх
+Пользователь -down-> Низ
+@enduml
+
+
+@startuml
+left to right direction
+Пользователь -left-> Лево
+Пользователь -right-> Право
+Пользователь -up-> Верх
+Пользователь -down-> Низ
+@enduml
+
+
+@startuml
+
+skinparam Class {
+
+    BackgroundColor LightGreen
+
+    ArrowColor Blue
+
+    BorderColor Red
+}
+
+skinparam StereotypeCBackgroundColor Magenta
+
+Class01 "к одному" *-- "от многих" Class02 : композиция
+
+Class03 o-- Class04 : агрегация
+@enduml
+
+
+@startuml
+
+skinparam Class {
+
+    BackgroundColor LightGreen
+
+    ArrowColor Blue
+
+    BorderColor Red
+
+    BackgroundColor<<Foo>> Green
+
+    BorderColor<<Foo>> Orange
+}
+
+skinparam StereotypeCBackgroundColor Magenta
+
+skinparam StereotypeCBackgroundColor<< Foo >> Gray
+
+Class01 <<Foo>>
+Class03 <<Foo>>
+
+Class01 "к одному" *-- "от многих" Class02 : композиция
+
+Class03 o-- Class04 : агрегация
+@enduml
+
+
+@startuml
+
+skinparam BackgroundColor AntiqueWhite/Gold
+skinparam ClassBackgroundColor Wheat|CornflowerBlue
+
+class Foo #red-lightgreen 
+note left to Foo #lightblue\9932CC
+   это моя заметка
+   об этом классе
+end note
+
+package Пример #GreenYellow/LightGoldenRodYellow {
+    class Заглушка
+}
+@enduml
+
+
+@startuml
+class ArrayList implements List
+class ArrayList extends AbstractList
+@enduml
+
+
+@startuml
+title Синтаксис квадратных скобочек без заметок
+class foo
+class bar  
+bar1 : [bold]
+bar2 : [dashed]
+bar3 : [dotted]
+bar4 : [hidden]
+bar5 : [plain]
+
+foo --> bar
+foo -[bold]-> bar1
+foo -[dashed]-> bar2
+foo -[dotted]-> bar3
+foo -[hidden]-> bar4
+foo -[plain]-> bar5
+@enduml
+
+
+@startuml
+title Синтаксис квадратных скобочек без заметок
+class foo
+class bar  
+bar1 : [bold]
+bar2 : [dashed]
+bar3 : [dotted]
+bar4 : [hidden]
+bar5 : [plain]
+
+foo --> bar           : по умолчанию
+foo -[bold]-> bar1    : [жирный]
+foo -[dashed]-> bar2  : [штриховой]
+foo -[dotted]-> bar3  : [пунктирный]
+foo -[hidden]-> bar4  : [скрытый]
+foo -[plain]-> bar5   : [непрерывный]
+@enduml
+
+@startuml
+title Задание цвета при помощи синтаксиса квадратных скобочек
+class foo 
+class bar
+bar1 : [#red]
+bar2 : [#green]
+bar3 : [#blue]
+
+foo --> bar : обычный
+foo -[#red] -> bar1 : [красный]
+foo -[#green] -> bar2 : [зеленый]
+foo -[#blue] -> bar3 : [голубой]
+@enduml
+
+@startuml
+title Задание толщины при помощи синтаксиса квадратных скобочек
+class foo
+class bar
+bar1 : [thickness=1]
+bar2 : [thickness=2]
+bar3 : [thickness=4]
+bar4 : [thickness=8]
+bar5 : [thickness=16]
+
+foo --> bar
+foo -[thickness=1]-> bar1 
+foo -[thickness=2]-> bar2
+foo -[thickness=4]-> bar3
+foo -[thickness=8]-> bar4
+foo -[thickness=16]-> bar5  
+@enduml
+
+@startuml
+class foo
+foo --> bar : обычная
+foo --> bar1 #line:red;line.bold;text:red : красный,жирный
+foo --> bar2 #line:green;line.dashed;text:green : зеленый,штриховой
+foo --> bar3 #line:blue;line.dotted;text:blue : красный,жирный
+@enduml
+
+@startuml
+class Foo{
+    +field1
+    +field2
+}
+class Bar{
+    +field3
+    +field4
+}
+Foo::field1 --> Bar::field3 : foo
+Foo::field2 --> Bar::field4 : bar
+@enduml
+
+@startuml
+skinparam groupInheritance 1
+A1 <|-- B1
+
+A2 <|-- B2
+A2 <|-- C2
+
+A3 <|-- B3
+A3 <|-- C3
+A3 <|-- D3
+
+A4 <|-- B4
+A4 <|-- C4
+A4 <|-- D4
+A4 <|-- E4
+@enduml
+
